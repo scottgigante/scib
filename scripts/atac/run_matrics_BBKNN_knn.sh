@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source activate sc-clone
+source activate sc-clone 
 
 METHOD=BBKNN
 MODE=knn
