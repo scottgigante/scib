@@ -13,7 +13,5 @@ Benchmarking_data_integration.Rproj
 Personal_note_Kris.Rmd
 notebooks/integration/*.html
 notebooks/integration/*.py
-notebooks/integration/figures
 notebooks/data_preprocessing/brain_atac/*.html
 notebooks/data_preprocessing/brain_atac/*.py
-notebooks/data_preprocessing/brain_atac/figures
