@@ -47,8 +47,6 @@ fi
 for METHOD in bbknn scanorama harmony conos seurat trvae mnn
 do
 
-echo "Submitting to run ${METHOD}"
-
 NODE_OUTPUTFILE=${NODE_WORKDIR_OUT}/${FPREF}_${METHOD}.h5ad
 
 ${NODE_PYTHON} -s ${NODE_PYSCRIPT} -i ${NODE_INPUTFILE} -o ${NODE_OUTPUTFILE} -b ${BATCH} -v ${HVGS} -m ${METHOD} 
@@ -57,6 +55,13 @@ ${NODE_PYTHON} -s ${NODE_PYSCRIPT} -i ${NODE_INPUTFILE} -o ${NODE_OUTPUTFILE} -b
 sleep 0.3
 
 done
+
+if [ ! -d "${OUTDIR}/output" ]; then
+  cp -rf ${NODE_WORKDIR_OUT} ${OUTDIR}/.
+else
+  cp -n ${NODE_WORKDIR_OUT}/* ${OUTDIR}/output/.
+fi
+
 
 # All temporary files and directories won't be removed since we can reuse them again and again
 # Before returning a node to Aliaksey, we do need to manually remove everything in /localscratch
