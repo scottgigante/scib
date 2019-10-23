@@ -17,11 +17,10 @@ RAMperCPU=16000
 function run_all {
     for METHOD in bbknn scanorama harmony conos seurat trvae mnn
     do
-        BNAME=$(basename $4)
-        FPREF=${BNAME%.*}
+        FBASE=${4##*/}
+        FPREF=${FBASE%.*}
         NODE_SBATCH_LOG=${7}/${FPREF}_${METHOD}_log.txt
         NODE_SBATCH_ERR=${7}/${FPREF}_${METHOD}_err.txt
-        #sbatch --partition=icb_rstrct --qos=icb_rstrct --ntasks=1 --cpus-per-task=${2} --mem-per-cpu=${3} --time=4-00:00:00 --job-name=scib --output=${NODE_SBATCH_LOG} --error=${NODE_SBATCH_ERR} ${1}/slave_integration.sh ${4} ${5} ${6} ${7} ${METHOD}
         echo sbatch --partition=icb_rstrct --qos=icb_rstrct --ntasks=1 --cpus-per-task=${2} --mem-per-cpu=${3} --time=4-00:00:00 --job-name=scib --output=${NODE_SBATCH_LOG} --error=${NODE_SBATCH_ERR} ${1}/slave_integration.sh ${4} ${5} ${6} ${7} ${METHOD}
 
         # add a bit of delay, otherwise it will be too overloaded for Slurm
