@@ -52,7 +52,7 @@ echo "Done ${METHOD}. Copying the result files from /localscratch to the indicat
 if [ ! -d "${OUTDIR}/output" ]; then
   cp -rf ${NODE_WORKDIR_OUT} ${OUTDIR}/.
 else
-  cp -f ${NODE_WORKDIR_OUT}/* ${OUTDIR}/output/.
+  cp -n ${NODE_WORKDIR_OUT}/* ${OUTDIR}/output/.
 fi
 
 # All temporary files and directories won't be removed since we can reuse them again and again
