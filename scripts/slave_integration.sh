@@ -1,6 +1,7 @@
 #!/bin/bash
 
-conda activate sc-tutorial 
+source /home/icb/daniel.strobl/.bashrc
+source activate sc-tutorial 
 
 INPUTFILE=$1
 BATCH=$2
@@ -51,9 +52,8 @@ echo "Done ${METHOD}. Copying the result files from /localscratch to the indicat
 if [ ! -d "${OUTDIR}/output" ]; then
   cp -rf ${NODE_WORKDIR_OUT} ${OUTDIR}/.
 else
-  cp -n ${NODE_WORKDIR_OUT}/* ${OUTDIR}/output/.
+  cp -f ${NODE_WORKDIR_OUT}/* ${OUTDIR}/output/.
 fi
-
 
 # All temporary files and directories won't be removed since we can reuse them again and again
 # Before returning a node to Aliaksey, we do need to manually remove everything in /localscratch
