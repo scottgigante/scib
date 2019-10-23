@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# To deactivate any conda environment if exist
-conda deactivate
-
 conda activate sc-tutorial 
 
 INPUTFILE=$1
