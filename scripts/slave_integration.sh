@@ -1,7 +1,5 @@
 #!/bin/bash
 
-source /home/icb/daniel.strobl/.bashrc
-
 # To deactivate any conda environment if exist
 conda deactivate
 
@@ -20,7 +18,8 @@ fi
 
 NODE_TMP=/localscratch/scib_run
 NODE_PYTHON=/home/icb/daniel.strobl/miniconda3/envs/sc-tutorial/bin/python
-NODE_PYSCRIPT=/home/icb/daniel.strobl/Benchmarking_data_integration/scripts/runIntegration.py
+#NODE_PYSCRIPT=/home/icb/daniel.strobl/Benchmarking_data_integration/scripts/runIntegration.py
+NODE_PYSCRIPT=/home/icb/chaichoompu/Benchmarking_data_integration/scripts/runIntegration.py
 
 FBASE=${INPUTFILE##*/}
 FPREF=${FBASE%.*}
