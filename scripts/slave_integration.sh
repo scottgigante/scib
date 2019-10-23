@@ -6,11 +6,13 @@ INPUTFILE=$1
 BATCH=$2
 HVGS=$3
 OUTDIR=$4
+METHOD=$5
 
 if [ $# -eq 0 ]
   then
     echo "To run this script:"
     echo "slave_integration.sh <input file> <the nanme of batch column> <number of HVGS> <output directory> <method>"
+    exit
 fi
 
 NODE_TMP=/localscratch/scib_run
@@ -40,18 +42,13 @@ if [ ! -f ${NODE_INPUTFILE} ]; then
     cp ${INPUTFILE} ${NODE_TMP}/.
 fi
 
-for METHOD in bbknn scanorama harmony conos seurat trvae mnn
-do
+echo "Starting ${METHOD}"
 
 NODE_OUTPUTFILE=${NODE_WORKDIR_OUT}/${FPREF}_${METHOD}.h5ad
 
 ${NODE_PYTHON} -s ${NODE_PYSCRIPT} -i ${NODE_INPUTFILE} -o ${NODE_OUTPUTFILE} -b ${BATCH} -v ${HVGS} -m ${METHOD} 
 
-# add a bit of delay, otherwise it will be too overloaded for Slurm
-sleep 0.3
-
-done
-
+echo "Done ${METHOD}. Copying the result files from /localscratch to the indicated directory"
 if [ ! -d "${OUTDIR}/output" ]; then
   cp -rf ${NODE_WORKDIR_OUT} ${OUTDIR}/.
 else
