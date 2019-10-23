@@ -15,7 +15,7 @@ OUTDIR=$4
 if [ $# -eq 0 ]
   then
     echo "To run this script:"
-    echo "slave_integration.sh <input file> <the nanme of batch column> <number of HVGS> <output directory>"
+    echo "slave_integration.sh <input file> <the nanme of batch column> <number of HVGS> <output directory> <method>"
 fi
 
 NODE_TMP=/localscratch/scib_run
@@ -50,12 +50,8 @@ do
 echo "Submitting to run ${METHOD}"
 
 NODE_OUTPUTFILE=${NODE_WORKDIR_OUT}/${FPREF}_${METHOD}.h5ad
-NODE_OUTPUTLOG=${NODE_WORKDIR_OUT}/${FPREF}_${METHOD}.txt
 
-NODE_SBATCH_LOG=${NODE_WORKDIR_OUT}/${FPREF}_${METHOD}_log.txt
-NODE_SBATCH_ERR=${NODE_WORKDIR_OUT}/${FPREF}_${METHOD}_err.txt
-
-sbatch --partition=icb_rstrct --qos=icb_rstrct --ntasks=1 --cpus-per-task=16 --mem-per-cpu=16000 --time=4-00:00:00 --job-name=scib --output=${NODE_SBATCH_LOG} --error=${NODE_SBATCH_ERR} ${NODE_PYTHON} -s ${NODE_PYSCRIPT} -i ${NODE_INPUTFILE} -o ${NODE_OUTPUTFILE} -b ${BATCH} -v ${HVGS} -m ${METHOD} 
+${NODE_PYTHON} -s ${NODE_PYSCRIPT} -i ${NODE_INPUTFILE} -o ${NODE_OUTPUTFILE} -b ${BATCH} -v ${HVGS} -m ${METHOD} 
 
 # add a bit of delay, otherwise it will be too overloaded for Slurm
 sleep 0.3
