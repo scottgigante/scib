@@ -17,7 +17,7 @@ RAMperCPU=16000
 function run_all {
     for METHOD in bbknn scanorama harmony conos seurat trvae mnn
     do
-        BNAME=$(basename $a)
+        BNAME=$(basename $4)
         FPREF=${BNAME%.*}
         NODE_SBATCH_LOG=${7}/${FPREF}_${METHOD}_log.txt
         NODE_SBATCH_ERR=${7}/${FPREF}_${METHOD}_err.txt
