@@ -12,8 +12,8 @@ RAMperCPU=16000
 #$4= input file or INPUTFILE
 #$5= batch column name or BATCH
 #$6= number of HVGs or HVGS
-#$7= output path or OUTDIR
-
+#$7= output path or OUTDIR, the directory needs to existed, the output files will be saved under $OUTDIR/output
+ 
 function run_all {
     for METHOD in bbknn scanorama harmony conos seurat trvae mnn
     do
