@@ -2,7 +2,7 @@
 
 # Global settings
 SCRIPTPATH=/home/icb/chaichoompu/Group/workspace/Benchmarking_data_integration_branch_ATAC/Benchmarking_data_integration/scripts
-CPU=16
+CPU=24
 RAMperCPU=16000
 
 #To call run_all
