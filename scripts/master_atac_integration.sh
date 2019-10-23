@@ -17,7 +17,8 @@ RAMperCPU=16000
 function run_all {
     for METHOD in bbknn scanorama harmony conos seurat trvae mnn
     do
-        FPREF=${4%.*}
+        BNAME=$(basename $a)
+        FPREF=${BNAME%.*}
         NODE_SBATCH_LOG=${7}/${FPREF}_${METHOD}_log.txt
         NODE_SBATCH_ERR=${7}/${FPREF}_${METHOD}_err.txt
         #sbatch --partition=icb_rstrct --qos=icb_rstrct --ntasks=1 --cpus-per-task=${2} --mem-per-cpu=${3} --time=4-00:00:00 --job-name=scib --output=${NODE_SBATCH_LOG} --error=${NODE_SBATCH_ERR} ${1}/slave_integration.sh ${4} ${5} ${6} ${7} ${METHOD}
@@ -29,6 +30,7 @@ function run_all {
 }
                 
 # Run settings
+# Please use the full path
 INPUTFILE=/storage/groups/ce01/workspace/Benchmarking_data_integration/data/brain_atac_3datasets/merge_10x_CEMBA180312_3B_GSM3034638_bin_merged_filterRowCol_filterCountCell.h5ad
 BATCH=batchname
 HVGS=0
