@@ -50,10 +50,9 @@ ${NODE_PYTHON} -s ${NODE_PYSCRIPT} -i ${NODE_INPUTFILE} -o ${NODE_OUTPUTFILE} -b
 
 echo "Done ${METHOD}. Copying the result files from /localscratch to the indicated directory"
 if [ ! -d "${OUTDIR}/output" ]; then
-  cp -rf ${NODE_WORKDIR_OUT} ${OUTDIR}/.
-else
-  cp -n ${NODE_WORKDIR_OUT}/* ${OUTDIR}/output/.
+  mkdir ${OUTDIR}/output
 fi
+cp -n ${NODE_WORKDIR_OUT}/${FPREF}* ${OUTDIR}/output/.
 
 # All temporary files and directories won't be removed since we can reuse them again and again
 # Before returning a node to Aliaksey, we do need to manually remove everything in /localscratch
