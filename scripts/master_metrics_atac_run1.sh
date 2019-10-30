@@ -14,15 +14,16 @@ RAMperCPU=8000
 #$6= output path or OUTDIR, the directory needs to existed, the output files will be saved under $OUTDIR/output
 #$7= batch column name or BATCH
 #$8= CELLTYPE
-#$9= TYPE
-#$10= number of HVGs or HVGS
+#$9= ORGANISM
+#$10= TYPE
+#$11= number of HVGs or HVGS
 function run_all {
 
     FBASE=${5##*/}
     FPREF=${FBASE%.*}
-    NODE_SBATCH_LOG=${6}/${FPREF}_metrics_log.txt
-    NODE_SBATCH_ERR=${6}/${FPREF}_metrics_err.txt
-    sbatch --partition=serial_fed28 --qos=usr_lmts --ntasks=1 --cpus-per-task=${2} --mem-per-cpu=${3} --time=1-00:00:00 --job-name=metric --output=${NODE_SBATCH_LOG} --error=${NODE_SBATCH_ERR} ${1}/slave_metrics.sh ${4} ${5} ${6} ${7} ${8} ${9} ${10}
+    NODE_SBATCH_LOG=${6}/${FPREF}_type${9}_metrics_log.txt
+    NODE_SBATCH_ERR=${6}/${FPREF}_type${9}_metrics_err.txt
+    echo sbatch --partition=serial_fed28 --qos=usr_lmts --ntasks=1 --cpus-per-task=${2} --mem-per-cpu=${3} --time=1-00:00:00 --job-name=metric --output=${NODE_SBATCH_LOG} --error=${NODE_SBATCH_ERR} ${1}/slave_metrics.sh ${4} ${5} ${6} ${7} ${8} ${9} ${10} ${11}
 
     # add a bit of delay, otherwise it will be too overloaded for Slurm
     sleep 0.3
@@ -43,8 +44,9 @@ do
     OUTDIR=/storage/groups/ce01/workspace/Benchmarking_data_integration/data/brain_atac_3datasets
     BATCH=batchname
     CELLTYPE=cell_type_consensus
+    ORGANISM=human
     HVGS=0
-    run_all ${SCRIPTPATH} ${CPU} ${RAMperCPU} ${INPUTFILE} ${INTEGRATIONFILE} ${OUTDIR} ${BATCH} ${CELLTYPE} ${TYPE} ${HVGS}
+    run_all ${SCRIPTPATH} ${CPU} ${RAMperCPU} ${INPUTFILE} ${INTEGRATIONFILE} ${OUTDIR} ${BATCH} ${CELLTYPE} ${ORGANISM} ${TYPE} ${HVGS}
 
 done
 

@@ -59,10 +59,10 @@ fi
 
 # The result file of runintegration should be in /output.
 # If not, once, copy the integration file into temp directory
-NODE_INTEGRATIONFILE=${NODE_TMP}/output/${FBASE_INT}
+NODE_INTEGRATIONFILE=${NODE_TMP}/${FBASE_INT}
 
 if [ ! -f ${NODE_INTEGRATIONFILE} ]; then
-    cp ${INTEGRATIONFILE} ${NODE_TMP}/output/.
+    cp ${INTEGRATIONFILE} ${NODE_TMP}/.
 fi
 
 NODE_OUTPUTFILE=${NODE_WORKDIR_OUT}/${FPREF_INT}_hvg${HVGS}
@@ -76,8 +76,8 @@ echo "Done. Copying the result files from /localscratch to the indicated directo
 if [ ! -d "${OUTDIR}/output_metrics" ]; then
   mkdir ${OUTDIR}/output_metrics
 fi
-cp -n ${NODE_OUTPUTFILE}* ${OUTDIR}/output_metrics/.
+cp -n -r ${NODE_OUTPUTFILE}* ${OUTDIR}/output_metrics/.
 
 # All temporary files and directories won't be removed since we can reuse them again and again
-# Before returning a node to Aliaksey, we do need to manually remove everything in /localscratch
+# When finish, we do need to manually remove everything in /localscratch in all compute nodes
 
