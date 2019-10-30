@@ -2,8 +2,8 @@
 
 # Global settings
 SCRIPTPATH=/home/icb/chaichoompu/Group/workspace/Benchmarking_data_integration_branch_ATAC/Benchmarking_data_integration/scripts
-CPU=8
-RAMperCPU=16000
+CPU=2
+RAMperCPU=8000
 
 #To call run_all
 #$1= path of script or SCRIPTPATH
@@ -22,7 +22,7 @@ function run_all {
     FPREF=${FBASE%.*}
     NODE_SBATCH_LOG=${6}/${FPREF}_metrics_log.txt
     NODE_SBATCH_ERR=${6}/${FPREF}_metrics_err.txt
-    sbatch --partition=serial_fed28 --qos=usr_lmts --ntasks=1 --cpus-per-task=${2} --mem-per-cpu=${3} --time=4-00:00:00 --job-name=metric --output=${NODE_SBATCH_LOG} --error=${NODE_SBATCH_ERR} ${1}/slave_metrics.sh ${4} ${5} ${6} ${7} ${8} ${9} ${10}
+    sbatch --partition=serial_fed28 --qos=usr_lmts --ntasks=1 --cpus-per-task=${2} --mem-per-cpu=${3} --time=1-00:00:00 --job-name=metric --output=${NODE_SBATCH_LOG} --error=${NODE_SBATCH_ERR} ${1}/slave_metrics.sh ${4} ${5} ${6} ${7} ${8} ${9} ${10}
 
     # add a bit of delay, otherwise it will be too overloaded for Slurm
     sleep 0.3
