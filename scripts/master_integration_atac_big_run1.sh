@@ -30,7 +30,7 @@ function run_all {
                 
 # Run settings
 # Please use the full path
-INPUTFILE=/storage/groups/ce01/workspace/Benchmarking_data_integration/data/brain_atac_3datasets/merge_10x_all_Fang_GSM3034638_bin_merged_top_var_feat_min500cells_regression_20191011.h5ad
+INPUTFILE=/storage/groups/ce01/workspace/Benchmarking_data_integration/data/brain_atac_3datasets/merge_10x_all_Fang_GSE111586_bin_merged_top_750000_var_feat_min100cells_regressed_20191015_good_cell_label.h5ad
 BATCH=batchname
 HVGS=0
 OUTDIR=/storage/groups/ce01/workspace/Benchmarking_data_integration/data/brain_atac_3datasets
