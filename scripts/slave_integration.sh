@@ -52,7 +52,7 @@ echo "Done ${METHOD}. Copying the result files from /localscratch to the indicat
 if [ ! -d "${OUTDIR}/output" ]; then
   mkdir ${OUTDIR}/output
 fi
-cp -n ${NODE_WORKDIR_OUT}/${FPREF}* ${OUTDIR}/output/.
+cp -f ${NODE_WORKDIR_OUT}/${FPREF}* ${OUTDIR}/output/.
 
 # All temporary files and directories won't be removed since we can reuse them again and again
 # Before returning a node to Aliaksey, we do need to manually remove everything in /localscratch
