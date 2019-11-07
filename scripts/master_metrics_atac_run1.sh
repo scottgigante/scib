@@ -24,6 +24,7 @@ function run_all {
     NODE_SBATCH_LOG=${6}/${FPREF}_type${10}_metrics_log.txt
     NODE_SBATCH_ERR=${6}/${FPREF}_type${10}_metrics_err.txt
     sbatch --partition=serial_fed28 --qos=usr_lmts --ntasks=1 --cpus-per-task=${2} --mem-per-cpu=${3} --time=1-00:00:00 --job-name=metric --output=${NODE_SBATCH_LOG} --error=${NODE_SBATCH_ERR} ${1}/slave_metrics.sh ${4} ${5} ${6} ${7} ${8} ${9} ${10} ${11}
+    echo sbatch --partition=serial_fed28 --qos=usr_lmts --ntasks=1 --cpus-per-task=${2} --mem-per-cpu=${3} --time=1-00:00:00 --job-name=metric --output=${NODE_SBATCH_LOG} --error=${NODE_SBATCH_ERR} ${1}/slave_metrics.sh ${4} ${5} ${6} ${7} ${8} ${9} ${10} ${11}
 
     # add a bit of delay, otherwise it will be too overloaded for Slurm
     sleep 0.3
@@ -32,9 +33,9 @@ function run_all {
                 
 # Run settings
 # Please use the full path
-PARAM=bbknn_knn
+#bbknn_knn scanorama_full scanorama_embed harmony_embed trvae_full trvae_embed
 
-for PARAM in bbknn_knn scanorama_full scanorama_embed harmony_embed trvae_full trvae_embed
+for PARAM in bbknn_knn scanorama_full scanorama_embed harmony_embed
 do
     METHOD=${PARAM%_*}
     TYPE=${PARAM##*_}
@@ -43,7 +44,7 @@ do
     INTEGRATIONFILE=/storage/groups/ce01/workspace/Benchmarking_data_integration/data/brain_atac_3datasets/output/merge_10x_CEMBA180312_3B_GSM3034638_bin_merged_filterRowCol_filterCountCell_${METHOD}.h5ad
     OUTDIR=/storage/groups/ce01/workspace/Benchmarking_data_integration/data/brain_atac_3datasets
     BATCH=batchname
-    CELLTYPE=cell_type_consensus
+    CELLTYPE=broad_cell_label
     ORGANISM=human
     HVGS=0
     run_all ${SCRIPTPATH} ${CPU} ${RAMperCPU} ${INPUTFILE} ${INTEGRATIONFILE} ${OUTDIR} ${BATCH} ${CELLTYPE} ${ORGANISM} ${TYPE} ${HVGS}
