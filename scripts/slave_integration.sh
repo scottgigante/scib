@@ -46,7 +46,7 @@ echo "Starting ${METHOD}"
 
 NODE_OUTPUTFILE=${NODE_WORKDIR_OUT}/${FPREF}_${METHOD}_hvg${HVGS}.h5ad
 
-${NODE_PYTHON} -s ${NODE_PYSCRIPT} -i ${NODE_INPUTFILE} -o ${NODE_OUTPUTFILE} -b ${BATCH} -v ${HVGS} -m ${METHOD} 
+echo ${NODE_PYTHON} -s ${NODE_PYSCRIPT} -i ${NODE_INPUTFILE} -o ${NODE_OUTPUTFILE} -b ${BATCH} -v ${HVGS} -m ${METHOD} 
 
 echo "Done ${METHOD}. Copying the result files from /localscratch to the indicated directory"
 if [ ! -d "${OUTDIR}/output" ]; then
