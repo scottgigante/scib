@@ -15,7 +15,7 @@ RAMperCPU=16000
 #$7= output path or OUTDIR, the directory needs to existed, the output files will be saved under $OUTDIR/output
  
 function run_all {
-    for METHOD in scvi
+    for METHOD in bbknn scanorama harmony conos seurat trvae mnn scvi
     do
         FBASE=${4##*/}
         FPREF=${FBASE%.*}
