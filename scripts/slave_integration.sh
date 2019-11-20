@@ -46,7 +46,10 @@ echo "Starting ${METHOD}"
 
 NODE_OUTPUTFILE=${NODE_WORKDIR_OUT}/${FPREF}_${METHOD}_hvg${HVGS}.h5ad
 
-${NODE_PYTHON} -s ${NODE_PYSCRIPT} -i ${NODE_INPUTFILE} -o ${NODE_OUTPUTFILE} -b ${BATCH} -v ${HVGS} -m ${METHOD} 
+${NODE_PYTHON} ${NODE_PYSCRIPT} -i ${NODE_INPUTFILE} -o ${NODE_OUTPUTFILE} -b ${BATCH} -v ${HVGS} -m ${METHOD} 
+
+#use this command when there is a conflict with different versions of libraries imported from /home
+#${NODE_PYTHON} -s ${NODE_PYSCRIPT} -i ${NODE_INPUTFILE} -o ${NODE_OUTPUTFILE} -b ${BATCH} -v ${HVGS} -m ${METHOD} 
 
 echo "Done ${METHOD}. Copying the result files from /localscratch to the indicated directory"
 if [ ! -d "${OUTDIR}/output" ]; then
