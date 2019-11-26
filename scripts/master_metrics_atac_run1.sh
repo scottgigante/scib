@@ -23,7 +23,7 @@ function run_all {
     FPREF=${FBASE%.*}
     NODE_SBATCH_LOG=${6}/${FPREF}_type${10}_metrics_log.txt
     NODE_SBATCH_ERR=${6}/${FPREF}_type${10}_metrics_err.txt
-    #sbatch --partition=icb_cpu --qos=icb_stndrd --ntasks=1 --cpus-per-task=${2} --mem-per-cpu=${3} --time=1-00:00:00 --job-name=met --output=${NODE_SBATCH_LOG} --error=${NODE_SBATCH_ERR} ${1}/slave_metrics.sh ${4} ${5} ${6} ${7} ${8} ${9} ${10} ${11}
+    sbatch --partition=icb_cpu --qos=icb_stndrd --ntasks=1 --cpus-per-task=${2} --mem-per-cpu=${3} --time=1-00:00:00 --job-name=met --output=${NODE_SBATCH_LOG} --error=${NODE_SBATCH_ERR} ${1}/slave_metrics.sh ${4} ${5} ${6} ${7} ${8} ${9} ${10} ${11}
     echo sbatch --partition=icb_cpu --qos=icb_stndrd --ntasks=1 --cpus-per-task=${2} --mem-per-cpu=${3} --time=1-00:00:00 --job-name=met --output=${NODE_SBATCH_LOG} --error=${NODE_SBATCH_ERR} ${1}/slave_metrics.sh ${4} ${5} ${6} ${7} ${8} ${9} ${10} ${11}
     echo " "
     # add a bit of delay, otherwise it will be too overloaded for Slurm
