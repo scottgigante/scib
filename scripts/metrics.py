@@ -3,7 +3,7 @@
 
 # To run the code from brach metric fixes
 import sys
-sys.path.remove('/home/icb/chaichoompu/Benchmarking_data_integration')
+#sys.path.remove('/home/icb/chaichoompu/Benchmarking_data_integration')
 sys.path.append('/storage/groups/ce01/workspace/Benchmarking_data_integration_branch_metric_fixes/Benchmarking_data_integration')
 
 import scanpy as sc
