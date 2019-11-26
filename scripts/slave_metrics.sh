@@ -30,6 +30,7 @@ fi
 NODE_TMP=/localscratch/scib_run
 NODE_PYTHON=/home/icb/daniel.strobl/miniconda3/envs/sc-tutorial/bin/python
 NODE_PYSCRIPT=/home/icb/chaichoompu/Group/workspace/Benchmarking_data_integration_branch_metric_fixes/Benchmarking_data_integration/scripts/metrics.py
+NODE_SCIB=/home/icb/chaichoompu/Group/workspace/Benchmarking_data_integration_branch_metric_fixes/Benchmarking_data_integration
 
 FBASE=${INPUTFILE##*/}
 FPREF=${FBASE%.*}
@@ -68,8 +69,8 @@ NODE_OUTPUTFILE=${NODE_WORKDIR_OUT}
 
 echo "Starting"
 
-
-${NODE_PYTHON} ${NODE_PYSCRIPT} -u ${NODE_INPUTFILE} -i ${NODE_INTEGRATIONFILE} -o ${NODE_OUTPUTFILE} -b ${BATCH} -l ${CELLTYPE} --organism ${ORGANISM} --type ${TYPE} --hvgs ${HVGS}  
+cd ${NODE_SCIB}
+${NODE_PYTHON} -s ${NODE_PYSCRIPT} -u ${NODE_INPUTFILE} -i ${NODE_INTEGRATIONFILE} -o ${NODE_OUTPUTFILE} -b ${BATCH} -l ${CELLTYPE} --organism ${ORGANISM} --type ${TYPE} --hvgs ${HVGS}  
 
 echo "Done. Copying the result files from /localscratch to the indicated directory"
 if [ ! -d "${OUTDIR}/output_metrics" ]; then
