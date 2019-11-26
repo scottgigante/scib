@@ -15,7 +15,7 @@ RAMperCPU=16000
 #$7= output path or OUTDIR, the directory needs to existed, the output files will be saved under $OUTDIR/output
  
 function run_all {
-    for METHOD in trvae
+    for METHOD in scvi
     do
         FBASE=${4##*/}
         FPREF=${FBASE%.*}

@@ -33,7 +33,7 @@ function run_all {
 
 declare -a arr=(
 #    '/storage/groups/ce01/workspace/Benchmarking_data_integration/data/brain_atac_3datasets/merge_10x_CEMBA180312_3B_GSM3034638_bin_merged_top_var_feat_min500cells_regression_Seurat_cell_labels.h5ad|batchname|/storage/groups/ce01/workspace/Benchmarking_data_integration/data/brain_atac_3datasets'
-    '/storage/groups/ce01/workspace/Benchmarking_data_integration/data/brain_atac_3datasets/merge_10x_all_Fang_GSE111586_bin_merged_top_750000_var_feat_min100cells_regressed_20191015_good_cell_label.h5ad|batchname|/storage/groups/ce01/workspace/Benchmarking_data_integration/data/brain_atac_3datasets'
+    '/storage/groups/ce01/workspace/Benchmarking_data_integration/data/brain_atac_3datasets/merge_10x_all_Fang_GSE111586_bin_merged_top_750000_var_feat_min100cells_regressed_20191015_good_cell_label_sparse.h5ad|batchname|/storage/groups/ce01/workspace/Benchmarking_data_integration/data/brain_atac_3datasets'
     )
 
 for i in "${arr[@]}"
