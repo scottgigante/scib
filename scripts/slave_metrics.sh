@@ -29,8 +29,7 @@ fi
 
 NODE_TMP=/localscratch/scib_run
 NODE_PYTHON=/home/icb/daniel.strobl/miniconda3/envs/sc-tutorial/bin/python
-NODE_PYSCRIPT=/home/icb/chaichoompu/Group/workspace/Benchmarking_data_integration_branch_metric_fixes/Benchmarking_data_integration/scripts/metrics.py
-NODE_SCIB=/home/icb/chaichoompu/Group/workspace/Benchmarking_data_integration_branch_metric_fixes/Benchmarking_data_integration
+NODE_PYSCRIPT=/home/icb/chaichoompu/Group/workspace/Benchmarking_data_integration_branch_ATAC/Benchmarking_data_integration/scripts/metrics.py
 
 FBASE=${INPUTFILE##*/}
 FPREF=${FBASE%.*}
