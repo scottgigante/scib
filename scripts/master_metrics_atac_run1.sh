@@ -35,7 +35,7 @@ function run_all {
 # Please use the full path
 #bbknn_knn scanorama_full scanorama_embed harmony_embed trvae_full trvae_embed mnn_full
 
-for PARAM in scanorama_full scanorama_embed harmony_embed trvae_full trvae_embed mnn_full
+for PARAM in bbknn_knn scanorama_full scanorama_embed harmony_embed trvae_full trvae_embed mnn_full
 do
     for HVGS in 0
     do
