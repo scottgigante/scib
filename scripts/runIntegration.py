@@ -1,6 +1,9 @@
 #!/usr/bin/env python
 # coding: utf-8
 
+import sys
+sys.path.append('/storage/groups/ce01/workspace/Benchmarking_data_integration_branch_master/Benchmarking_data_integration')
+
 import scanpy as sc
 import scIB
 import warnings
