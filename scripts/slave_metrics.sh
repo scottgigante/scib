@@ -74,7 +74,7 @@ echo "Done. Copying the result files from /localscratch to the indicated directo
 if [ ! -d "${OUTDIR}/output_metrics" ]; then
   mkdir ${OUTDIR}/output_metrics
 fi
-cp -r ${NODE_OUTPUTFILE} ${OUTDIR}/output_metrics/.
+cp -f ${NODE_OUTPUTFILE}/${FPREF}* ${OUTDIR}/output_metrics/.
 
 # All temporary files and directories won't be removed since we can reuse them again and again
 # When finish, we do need to manually remove everything in /localscratch in all compute nodes

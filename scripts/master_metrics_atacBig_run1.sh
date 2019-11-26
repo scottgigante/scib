@@ -42,11 +42,11 @@ do
         METHOD=${PARAM%_*}
         TYPE=${PARAM##*_}
         
-        INPUTFILE=/storage/groups/ml01/workspace/maren.buettner/data_integration/data/human_pancreas/human_pancreas_norm.h5ad
-        INTEGRATIONFILE=/storage/groups/ml01/workspace/maren.buettner/data_integration/data/human_pancreas/integrated/output/human_pancreas_norm_${METHOD}_hvg${HVGS}.h5ad
-        OUTDIR=/storage/groups/ml01/workspace/maren.buettner/data_integration/data/human_pancreas/integrated
-        BATCH=tech
-        CELLTYPE=celltype
+        INPUTFILE=/storage/groups/ce01/workspace/Benchmarking_data_integration/data/brain_atac_3datasets/merge_10x_all_Fang_GSE111586_bin_merged_top_750000_var_feat_min100cells_regressed_20191015_good_cell_label_sparse.h5ad
+        INTEGRATIONFILE=/storage/groups/ce01/workspace/Benchmarking_data_integration/data/brain_atac_3datasets/output/merge_10x_all_Fang_GSE111586_bin_merged_top_750000_var_feat_min100cells_regressed_20191015_good_cell_label_sparse_${METHOD}_hvg${HVGS}.h5ad
+        OUTDIR=/storage/groups/ce01/workspace/Benchmarking_data_integration/data/brain_atac_3datasets
+        BATCH=batchname
+        CELLTYPE=broad_cell_label
         ORGANISM=human
         run_all ${SCRIPTPATH} ${CPU} ${RAMperCPU} ${INPUTFILE} ${INTEGRATIONFILE} ${OUTDIR} ${BATCH} ${CELLTYPE} ${ORGANISM} ${TYPE} ${HVGS}
     done

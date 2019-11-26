@@ -42,12 +42,12 @@ do
         METHOD=${PARAM%_*}
         TYPE=${PARAM##*_}
         
-        INPUTFILE=/storage/groups/ml01/workspace/maren.buettner/data_integration/data/human_pancreas/human_pancreas_norm.h5ad
-        INTEGRATIONFILE=/storage/groups/ml01/workspace/maren.buettner/data_integration/data/human_pancreas/integrated/output/human_pancreas_norm_${METHOD}_hvg${HVGS}.h5ad
-        OUTDIR=/storage/groups/ml01/workspace/maren.buettner/data_integration/data/human_pancreas/integrated
-        BATCH=tech
-        CELLTYPE=celltype
-        ORGANISM=human
+        INPUTFILE=/storage/groups/ml01/workspace/maren.buettner/data_integration/data/mouse_brain/mouse_brain_norm.h5ad
+        INTEGRATIONFILE=/storage/groups/ml01/workspace/maren.buettner/data_integration/data/mouse_brain/integrated/output/mouse_brain_norm_${METHOD}_hvg${HVGS}.h5ad
+        OUTDIR=/storage/groups/ml01/workspace/maren.buettner/data_integration/data/mouse_brain/integrated
+        BATCH=study
+        CELLTYPE=cell_type
+        ORGANISM=mouse
         run_all ${SCRIPTPATH} ${CPU} ${RAMperCPU} ${INPUTFILE} ${INTEGRATIONFILE} ${OUTDIR} ${BATCH} ${CELLTYPE} ${ORGANISM} ${TYPE} ${HVGS}
     done
 done

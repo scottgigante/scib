@@ -42,11 +42,11 @@ do
         METHOD=${PARAM%_*}
         TYPE=${PARAM##*_}
         
-        INPUTFILE=/storage/groups/ml01/workspace/maren.buettner/data_integration/data/human_pancreas/human_pancreas_norm.h5ad
-        INTEGRATIONFILE=/storage/groups/ml01/workspace/maren.buettner/data_integration/data/human_pancreas/integrated/output/human_pancreas_norm_${METHOD}_hvg${HVGS}.h5ad
-        OUTDIR=/storage/groups/ml01/workspace/maren.buettner/data_integration/data/human_pancreas/integrated
-        BATCH=tech
-        CELLTYPE=celltype
+        INPUTFILE=/storage/groups/ml01/workspace/group.daniela/immune_cells/Immune_ALL_hum_mou.h5ad
+        INTEGRATIONFILE=/storage/groups/ml01/workspace/group.daniela/immune_cells/output/Immune_ALL_hum_mou_${METHOD}_hvg${HVGS}.h5ad
+        OUTDIR=/storage/groups/ml01/workspace/group.daniela/immune_cells
+        BATCH=batch
+        CELLTYPE=final_annotation
         ORGANISM=human
         run_all ${SCRIPTPATH} ${CPU} ${RAMperCPU} ${INPUTFILE} ${INTEGRATIONFILE} ${OUTDIR} ${BATCH} ${CELLTYPE} ${ORGANISM} ${TYPE} ${HVGS}
     done
