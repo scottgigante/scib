@@ -69,7 +69,7 @@ NODE_OUTPUTFILE=${NODE_WORKDIR_OUT}
 echo "Starting"
 
 echo ${NODE_PYTHON} -s ${NODE_PYSCRIPT} -u ${NODE_INPUTFILE} -i ${NODE_INTEGRATIONFILE} -o ${NODE_OUTPUTFILE} -b ${BATCH} -l ${CELLTYPE} --organism ${ORGANISM} --type ${TYPE} --hvgs ${HVGS}  
-exit 1
+
 ${NODE_PYTHON} -s ${NODE_PYSCRIPT} -u ${NODE_INPUTFILE} -i ${NODE_INTEGRATIONFILE} -o ${NODE_OUTPUTFILE} -b ${BATCH} -l ${CELLTYPE} --organism ${ORGANISM} --type ${TYPE} --hvgs ${HVGS}  
 
 echo "Done. Copying the result files from /localscratch to the indicated directory"

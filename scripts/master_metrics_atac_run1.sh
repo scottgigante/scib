@@ -33,7 +33,6 @@ function run_all {
                 
 # Run settings
 # Please use the full path
-#bbknn_knn scanorama_full scanorama_embed harmony_embed trvae_full trvae_embed mnn_full
 
 for PARAM in scanorama_full mnn_full seurat_full scanorama_embed harmony_embed trvae_embed bbknn_knn
 do

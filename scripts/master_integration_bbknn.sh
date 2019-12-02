@@ -32,8 +32,11 @@ function run_all {
 # Please use the full path
 
 declare -a arr=(
-    '/storage/groups/ce01/workspace/Benchmarking_data_integration/data/brain_atac_3datasets/merge_10x_CEMBA180312_3B_GSM3034638_bin_merged_top_var_feat_min500cells_regression_Seurat_cell_labels.h5ad|batchname|/storage/groups/ce01/workspace/Benchmarking_data_integration/data/brain_atac_3datasets'
-    '/storage/groups/ce01/workspace/Benchmarking_data_integration/data/brain_atac_3datasets/merge_10x_all_Fang_GSE111586_bin_merged_top_750000_var_feat_min100cells_regressed_20191015_good_cell_label_sparse.h5ad|batchname|/storage/groups/ce01/workspace/Benchmarking_data_integration/data/brain_atac_3datasets'
+    '/storage/groups/ml01/workspace/group.daniela/lung/Lung_atlas_final_fixed.h5ad|batch|/storage/groups/ml01/workspace/group.daniela/lung'
+    '/storage/groups/ml01/workspace/group.daniela/immune_cells/Immune_ALL_hum_mou.h5ad|batch|/storage/groups/ml01/workspace/group.daniela/immune_cells'
+    '/storage/groups/ml01/workspace/group.daniela/immune_cells/Immune_ALL_human.h5ad|batch|/storage/groups/ml01/workspace/group.daniela/immune_cells'
+    '/storage/groups/ml01/workspace/maren.buettner/data_integration/data/human_pancreas/human_pancreas_norm.h5ad|tech|/storage/groups/ml01/workspace/maren.buettner/data_integration/data/human_pancreas/integrated'
+    '/storage/groups/ml01/workspace/maren.buettner/data_integration/data/mouse_brain/mouse_brain_norm.h5ad|study|/storage/groups/ml01/workspace/maren.buettner/data_integration/data/mouse_brain/integrated'
     )
 
 for i in "${arr[@]}"
@@ -41,8 +44,10 @@ do
    INPUTFILE=`echo "$i"|cut -d'|' -f1`
    BATCH=`echo "$i"|cut -d'|' -f2`
    OUTDIR=`echo "$i"|cut -d'|' -f3`
-   HVGS=0
-   run_all ${SCRIPTPATH} ${CPU} ${RAMperCPU} ${INPUTFILE} ${BATCH} ${HVGS} ${OUTDIR}
+   for HVGS in 0 2000
+   do
+        run_all ${SCRIPTPATH} ${CPU} ${RAMperCPU} ${INPUTFILE} ${BATCH} ${HVGS} ${OUTDIR}
+   done
 done
 
 # All temporary files and directories won't be removed since we can reuse them again and again
