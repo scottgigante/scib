@@ -1,5 +1,13 @@
 #!/bin/bash
 
+if [ X"$SLURM_STEP_ID" = "X" -a X"$SLURM_PROCID" = "X"0 ]
+then
+  echo "print =========================================="
+  echo "print SLURM_JOB_ID = $SLURM_JOB_ID"
+  echo "print SLURM_JOB_NODELIST = $SLURM_JOB_NODELIST"
+  echo "print =========================================="
+fi
+
 source /home/icb/daniel.strobl/.bashrc
 source activate sc-tutorial 
 
