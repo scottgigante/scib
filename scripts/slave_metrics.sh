@@ -34,7 +34,12 @@ if [ ! -f ${INTEGRATIONFILE} ]; then
     exit
 fi
 
+# create the output directory in temp if not exist
+NODE_WORKDIR_OUT=${OUTDIR}/output_metrics
 
+if [ ! -d "$NODE_WORKDIR_OUT" ]; then
+  mkdir ${NODE_WORKDIR_OUT}
+fi
 
 NODE_PYTHON=/home/icb/daniel.strobl/miniconda3/envs/sc-tutorial/bin/python
 NODE_PYSCRIPT=/home/icb/chaichoompu/Group/workspace/Benchmarking_data_integration_branch_ATAC/Benchmarking_data_integration/scripts/metrics.py
@@ -42,8 +47,10 @@ NODE_PYSCRIPT=/home/icb/chaichoompu/Group/workspace/Benchmarking_data_integratio
 
 echo "Starting"
 
-echo ${NODE_PYTHON} -s ${NODE_PYSCRIPT} -u ${INPUTFILE} -i ${INTEGRATIONFILE} -o ${OUTDIR} -b ${BATCH} -l ${CELLTYPE} --organism ${ORGANISM} --type ${TYPE} --hvgs ${HVGS}  
-${NODE_PYTHON} -s ${NODE_PYSCRIPT} -u ${INPUTFILE} -i ${INTEGRATIONFILE} -o ${OUTDIR} -b ${BATCH} -l ${CELLTYPE} --organism ${ORGANISM} --type ${TYPE} --hvgs ${HVGS}  
+echo ${NODE_PYTHON} -s ${NODE_PYSCRIPT} -u ${INPUTFILE} -i ${INTEGRATIONFILE} -o ${NODE_WORKDIR_OUT} -b ${BATCH} -l ${CELLTYPE} --organism ${ORGANISM} --type ${TYPE} --hvgs ${HVGS}  
+${NODE_PYTHON} -s ${NODE_PYSCRIPT} -u ${INPUTFILE} -i ${INTEGRATIONFILE} -o ${NODE_WORKDIR_OUT} -b ${BATCH} -l ${CELLTYPE} --organism ${ORGANISM} --type ${TYPE} --hvgs ${HVGS}  
+
+chmod 777 -R ${NODE_WORKDIR_OUT}
 
 echo "Done."
 
