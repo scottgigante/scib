@@ -4,7 +4,7 @@
 # To run the code from brach metric fixes
 import sys
 #sys.path.remove('/home/icb/chaichoompu/Benchmarking_data_integration')
-sys.path.append('/storage/groups/ce01/workspace/Benchmarking_data_integration_branch_metric_fixes/Benchmarking_data_integration')
+sys.path.append('/home/icb/chaichoompu/Group/workspace/Benchmarking_data_integration_branch_cc_variance_analysis/scib')
 
 import scanpy as sc
 import scIB
@@ -98,7 +98,7 @@ if __name__=='__main__':
     if verbose:
         print('reduce integrated data:')
         print(f'    HVG selection:\t{n_hvgs}')
-        message = f'    compute neighbourhood graph:\t{precompute_neighbors}'
+        message = f'    compute neighbourhood graph:\t{recompute_neighbors}'
         if recompute_neighbors:
             message += f' on {embed}'
         print(message)
@@ -124,6 +124,7 @@ if __name__=='__main__':
         silhouette_ = False
         pcr_ = False
         cell_cycle_ = False
+        hvgs_ = False
     
     if verbose:
         print(f'type:\t{type_}')
@@ -154,4 +155,3 @@ if __name__=='__main__':
     results.to_csv(os.path.join(args.output, f'{out_prefix}_metrics.csv'))
 
     print("done")
-    

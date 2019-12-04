@@ -23,8 +23,8 @@ function run_all {
     FPREF=${FBASE%.*}
     NODE_SBATCH_LOG=${5}/${FPREF}_type${9}_plot_log.txt
     NODE_SBATCH_ERR=${5}/${FPREF}_type${9}_plot_err.txt
-    echo sbatch --partition=icb_cpu --qos=icb_stndrd --ntasks=1 --cpus-per-task=${2} --mem-per-cpu=${3} --time=1-00:00:00 --job-name=plot --output=${NODE_SBATCH_LOG} --error=${NODE_SBATCH_ERR} python ${1}/run_plot.py -i ${4} -o ${5} -b ${6} -l ${7} -m ${8} --hvgs ${9}
-    sbatch --partition=icb_cpu --qos=icb_stndrd --ntasks=1 --cpus-per-task=${2} --mem-per-cpu=${3} --time=1-00:00:00 --job-name=plot --output=${NODE_SBATCH_LOG} --error=${NODE_SBATCH_ERR} python ${1}/run_plot.py -i ${4} -o ${5} -b ${6} -l ${7} -m ${8} --hvgs ${9}
+    echo sbatch --partition=icb_cpu --qos=icb_stndrd --ntasks=1 --cpus-per-task=${2} --mem-per-cpu=${3} --time=1-00:00:00 --job-name=plot --output=${NODE_SBATCH_LOG} --error=${NODE_SBATCH_ERR} ${1}/slave_plot.sh ${4} ${5} ${6} ${7} ${8} ${9}
+    sbatch --partition=icb_cpu --qos=icb_stndrd --ntasks=1 --cpus-per-task=${2} --mem-per-cpu=${3} --time=1-00:00:00 --job-name=plot --output=${NODE_SBATCH_LOG} --error=${NODE_SBATCH_ERR} ${1}/slave_plot.sh ${4} ${5} ${6} ${7} ${8} ${9}
 
     echo " "
     # add a bit of delay, otherwise it will be too overloaded for Slurm
