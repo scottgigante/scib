@@ -34,7 +34,7 @@ function run_all {
 # Run settings
 # Please use the full path
 
-for PARAM in scanorama_full mnn_full seurat_full scanorama_embed harmony_embed trvae_embed bbknn_knn
+for PARAM in scanorama_full mnn_full seurat_full scanorama_embed harmony_embed trvae_embed scvi_embed bbknn_knn
 do
     for HVGS in 0
     do

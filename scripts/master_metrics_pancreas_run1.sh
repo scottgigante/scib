@@ -37,7 +37,7 @@ function run_all {
 
 for PARAM in scanorama_full mnn_full seurat_full scanorama_embed harmony_embed trvae_embed scvi_embed bbknn_knn
 do
-    for HVGS in 0
+    for HVGS in 0 2000
     do
         METHOD=${PARAM%_*}
         TYPE=${PARAM##*_}
