@@ -9,7 +9,7 @@ warnings.filterwarnings('ignore')
 # To run the code from brach metric fixes
 import sys
 #sys.path.remove('/home/icb/chaichoompu/Benchmarking_data_integration')
-sys.path.append('/storage/groups/ce01/workspace/Benchmarking_data_integration_branch_master/Benchmarking_data_integration/scIB')
+sys.path.append('/storage/groups/ce01/workspace/Benchmarking_data_integration_branch_master/Benchmarking_data_integration')
 
 
 # types of integration output
