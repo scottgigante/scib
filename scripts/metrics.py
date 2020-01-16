@@ -1,15 +1,16 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# To run the code from brach metric fixes
-import sys
-#sys.path.remove('/home/icb/chaichoompu/Benchmarking_data_integration')
-sys.path.append('/home/icb/chaichoompu/Group/workspace/Benchmarking_data_integration_branch_cc_variance_analysis/scib')
-
 import scanpy as sc
 import scIB
 import warnings
 warnings.filterwarnings('ignore')
+
+# To run the code from brach metric fixes
+import sys
+#sys.path.remove('/home/icb/chaichoompu/Benchmarking_data_integration')
+sys.path.append('/storage/groups/ce01/workspace/Benchmarking_data_integration_branch_master/Benchmarking_data_integration/scIB')
+
 
 # types of integration output
 RESULT_TYPES = [
@@ -72,24 +73,59 @@ if __name__=='__main__':
     print("reading adata after integration")
     adata_int = sc.read(args.integrated, cache=True)
     print(adata_int)
+
     if (n_hvgs is not None):
         if (adata_int.n_vars < n_hvgs):
             raise ValueError("There are less genes in the uncorrected adata than specified for HVG selection")
+       
+    # check input files
+    if adata.n_obs != adata_int.n_obs:
+        message = "The datasets have different numbers of cells before and after integration."
+        message += "Please make sure that both datasets match."
+        raise ValueError(message)
+    
+    #check if the obsnames were changed and rename them in that case
+    if not np.array_equal(adata.obs_names, adata_int.obs_names):
+        #rename adata_int.obs[batch_key] labels by overwriting them with the pre-integration labels
+        match_obs = np.concatenate([[obs_name for obs_name in adata.obs_names if idx.count(obs_name)>0] for idx in adata_int.obs_names])
+        adata_int.obs_names = match_obs
+    #batch_key might be overwritten, so we match it to the pre-integrated labels
+    adata_int.obs[batch_key] = adata_int.obs[batch_key].astype('category')
+    if not np.array_equal(adata.obs[batch_key].cat.categories,adata_int.obs[batch_key].cat.categories):
+        #pandas uses the table index to match the correct labels 
+        adata_int.obs[batch_key] = adata.obs[batch_key]
+        #print(adata.obs[batch_key].value_counts())
+        #print(adata_int.obs[batch_key].value_counts())
 
+
+    if (n_hvgs is not None) and (adata_int.n_vars < n_hvgs):
+        # check number of HVGs to be computed
+        message = "There are fewer genes in the uncorrected adata "
+        message += "than specified for HVG selection."
+        raise ValueError(message)    
+    
     # DATA REDUCTION
     # select options according to type
-    if adata.n_vars > adata_int.n_vars: # no HVG selection if output is not already subsetted
-        n_hvgs = None
+    
+    # case 1: full expression matrix, default settings
     precompute_pca = True
     recompute_neighbors = True
     embed = 'X_pca'
     
+    # distinguish between subsetted and full expression matrix
+    # compute HVGs only if output is already subsetted
+    if adata.n_vars > adata_int.n_vars:
+        n_hvgs = None
+    
+    # case 2: embedding output
     if (type_ == "embed"):
         n_hvgs = None
         embed = "X_emb"
         # legacy check
         if ('emb' in adata_int.uns) and (adata_int.uns['emb']):
             adata_int.obsm["X_emb"] = adata_int.obsm["X_pca"].copy()
+    
+    # case3: kNN graph output
     elif (type_ == "knn"):
         n_hvgs = None
         precompute_pca = False

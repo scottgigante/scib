@@ -42,7 +42,7 @@ if [ ! -d "$NODE_WORKDIR_OUT" ]; then
 fi
 
 NODE_PYTHON=/home/icb/daniel.strobl/miniconda3/envs/sc-tutorial/bin/python
-NODE_PYSCRIPT=/storage/groups/ce01/workspace/Benchmarking_data_integration_branch_master/Benchmarking_data_integration/scripts/metrics.py
+NODE_PYSCRIPT=/home/icb/chaichoompu/Group/workspace/Benchmarking_data_integration_branch_ATAC/Benchmarking_data_integration/scripts/metrics.py
 
 
 echo "Starting"
