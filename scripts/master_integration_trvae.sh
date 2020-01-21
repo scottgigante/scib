@@ -17,7 +17,7 @@ RERUN=1
 #$8= rerun = 1, otherwise not
 
 function run_all {
-    for METHOD in mnn
+    for METHOD in trvae
     do
         FBASE=${4##*/}
         FPREF=${FBASE%.*}
@@ -35,7 +35,7 @@ function run_all {
 
 declare -a arr=(
     '/storage/groups/ml01/workspace/group.daniela/lung/Lung_atlas_final_fixed.h5ad|batch|/storage/groups/ml01/workspace/group.daniela/lung'
-    '/storage/groups/ml01/workspace/group.daniela/immune_cells/Immune_ALL_hum_mou.h5ad|batch|/storage/groups/ml01/workspace/group.daniela/immune_cells'
+#    '/storage/groups/ml01/workspace/group.daniela/immune_cells/Immune_ALL_hum_mou.h5ad|batch|/storage/groups/ml01/workspace/group.daniela/immune_cells'
     '/storage/groups/ml01/workspace/group.daniela/immune_cells/Immune_ALL_human.h5ad|batch|/storage/groups/ml01/workspace/group.daniela/immune_cells'
     '/storage/groups/ml01/workspace/maren.buettner/data_integration/data/human_pancreas/human_pancreas_norm.h5ad|tech|/storage/groups/ml01/workspace/maren.buettner/data_integration/data/human_pancreas/integrated'
 #    '/storage/groups/ml01/workspace/maren.buettner/data_integration/data/mouse_brain/mouse_brain_norm.h5ad|study|/storage/groups/ml01/workspace/maren.buettner/data_integration/data/mouse_brain/integrated'
