@@ -38,9 +38,10 @@ FINAL_OUTPUT=${OUTDIR}/output/${FPREF}_${METHOD}_hvg${HVGS}.h5ad
 echo "Starting ${METHOD}"
 echo "Checking if exist: ${FINAL_OUTPUT}"
 
-if [ ! -f ${FINAL_OUTPUT} -o  ${RERUN} = "0" ]; then
+if [ ! -f ${FINAL_OUTPUT} -o  ${RERUN} = "1" ]; then
 
     echo "Check output file: not exist"
+    echo "Or rerun is enable"
     exit
     
     source /home/icb/daniel.strobl/.bashrc
@@ -82,6 +83,7 @@ if [ ! -f ${FINAL_OUTPUT} -o  ${RERUN} = "0" ]; then
 
 else
     echo "Check output file: exist"
+    echo "Or rerun is disable"
     exit
 fi
 
