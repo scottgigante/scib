@@ -17,7 +17,7 @@ RERUN=1
 #$8= rerun = 1, otherwise not
 
 function run_all {
-    for METHOD in bbknn
+    for METHOD in scanorama
     do
         FBASE=${4##*/}
         FPREF=${FBASE%.*}
