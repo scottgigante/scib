@@ -42,7 +42,6 @@ if [ ! -f ${FINAL_OUTPUT} -o  ${RERUN} = "1" ]; then
 
     echo "Check output file: not exist"
     echo "Or rerun is enable"
-    exit
     
     source /home/icb/daniel.strobl/.bashrc
     source activate sc-tutorial 
@@ -84,7 +83,6 @@ if [ ! -f ${FINAL_OUTPUT} -o  ${RERUN} = "1" ]; then
 else
     echo "Check output file: exist"
     echo "Or rerun is disable"
-    exit
 fi
 
 echo "Done All"

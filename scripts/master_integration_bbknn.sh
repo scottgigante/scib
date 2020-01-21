@@ -4,7 +4,7 @@
 SCRIPTPATH=/home/icb/chaichoompu/Group/workspace/Benchmarking_data_integration_branch_ATAC/Benchmarking_data_integration/scripts
 CPU=24
 RAMperCPU=16000
-RERUN=1
+RERUN=0
 
 #To call run_all
 #$1= path of script or SCRIPTPATH
