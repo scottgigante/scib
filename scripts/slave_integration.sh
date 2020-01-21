@@ -36,6 +36,7 @@ NODE_OUTPUTFILE=${NODE_WORKDIR_OUT}/${FPREF}_${METHOD}_hvg${HVGS}.h5ad
 FINAL_OUTPUT=${OUTDIR}/output/${FPREF}_${METHOD}_hvg${HVGS}.h5ad
 
 echo "Starting ${METHOD}"
+echo "Checking if exist: ${FINAL_OUTPUT}"
 
 if [ ! -f ${FINAL_OUTPUT} -o  ${RERUN} = "0" ]; then
 
