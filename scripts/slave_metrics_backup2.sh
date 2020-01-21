@@ -48,14 +48,7 @@ NODE_PYSCRIPT=/home/icb/chaichoompu/Group/workspace/Benchmarking_data_integratio
 echo "Starting"
 
 echo ${NODE_PYTHON} -s ${NODE_PYSCRIPT} -u ${INPUTFILE} -i ${INTEGRATIONFILE} -o ${NODE_WORKDIR_OUT} -b ${BATCH} -l ${CELLTYPE} --organism ${ORGANISM} --type ${TYPE} --hvgs ${HVGS}  
-
-STARTTIME=$(date +%s)
-
 ${NODE_PYTHON} -s ${NODE_PYSCRIPT} -u ${INPUTFILE} -i ${INTEGRATIONFILE} -o ${NODE_WORKDIR_OUT} -b ${BATCH} -l ${CELLTYPE} --organism ${ORGANISM} --type ${TYPE} --hvgs ${HVGS}  
-
-ENDTIME=$(date +%s)
-
-echo "Wall time (sec) =$(($ENDTIME - $STARTTIME))"
 
 chmod 777 -R ${NODE_WORKDIR_OUT}
 

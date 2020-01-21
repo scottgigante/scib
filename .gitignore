@@ -15,3 +15,4 @@ notebooks/integration/*.html
 notebooks/integration/*.py
 notebooks/data_preprocessing/brain_atac/*.html
 notebooks/data_preprocessing/brain_atac/*.py
+notebooks/integration/figures/*

@@ -4,7 +4,6 @@
 SCRIPTPATH=/home/icb/chaichoompu/Group/workspace/Benchmarking_data_integration_branch_ATAC/Benchmarking_data_integration/scripts
 CPU=24
 RAMperCPU=16000
-RERUN=0
 
 #To call run_all
 #$1= path of script or SCRIPTPATH
@@ -14,16 +13,15 @@ RERUN=0
 #$5= batch column name or BATCH
 #$6= number of HVGs or HVGS
 #$7= output path or OUTDIR, the directory needs to existed, the output files will be saved under $OUTDIR/output
-#$8= rerun = 1, otherwise not
-
+ 
 function run_all {
-    for METHOD in bbknn
+    for METHOD in combat
     do
         FBASE=${4##*/}
         FPREF=${FBASE%.*}
         NODE_SBATCH_LOG=${7}/${FPREF}_${METHOD}_hvg${6}_log.txt
         NODE_SBATCH_ERR=${7}/${FPREF}_${METHOD}_hvg${6}_err.txt
-        sbatch --partition=icb_rstrct --qos=icb_rstrct --ntasks=1 --cpus-per-task=${2} --mem-per-cpu=${3} --time=4-00:00:00 --job-name=scib --output=${NODE_SBATCH_LOG} --error=${NODE_SBATCH_ERR} ${1}/slave_integration.sh ${4} ${5} ${6} ${7} ${METHOD} ${8}
+        sbatch --partition=icb_rstrct --qos=icb_rstrct --ntasks=1 --cpus-per-task=${2} --mem-per-cpu=${3} --time=4-00:00:00 --job-name=sc_cb --output=${NODE_SBATCH_LOG} --error=${NODE_SBATCH_ERR} ${1}/slave_integration.sh ${4} ${5} ${6} ${7} ${METHOD}
 
         # add a bit of delay, otherwise it will be too overloaded for Slurm
         sleep 0.3
@@ -48,7 +46,7 @@ do
    OUTDIR=`echo "$i"|cut -d'|' -f3`
    for HVGS in 0 2000
    do
-        run_all ${SCRIPTPATH} ${CPU} ${RAMperCPU} ${INPUTFILE} ${BATCH} ${HVGS} ${OUTDIR} ${RERUN}
+        run_all ${SCRIPTPATH} ${CPU} ${RAMperCPU} ${INPUTFILE} ${BATCH} ${HVGS} ${OUTDIR}
    done
 done
 
