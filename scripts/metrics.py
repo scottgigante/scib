@@ -11,8 +11,6 @@ import sys
 #sys.path.remove('/home/icb/chaichoompu/Benchmarking_data_integration')
 sys.path.append('/storage/groups/ce01/workspace/Benchmarking_data_integration_branch_master/Benchmarking_data_integration')
 
-import scIB
-
 # types of integration output
 RESULT_TYPES = [
     "full", # reconstructed expression data
@@ -86,11 +84,11 @@ if __name__=='__main__':
         raise ValueError(message)
     
     #check if the obsnames were changed and rename them in that case
-    if not np.array_equal(adata.obs_names, adata_int.obs_names):
+    if len(set(adata.obs_names).difference(set(adata_int.obs_names))) > 0:
         #rename adata_int.obs[batch_key] labels by overwriting them with the pre-integration labels
         new_obs_names = ['-'.join(idx.split('-')[:-1]) for idx in adata_int.obs_names]
 
-        if np.array_equal(adata.obs_names, new_obs_names):
+        if len(set(adata.obs_names).difference(set(new_obs_names))):
             adata_int.obs_names = new_obs_names
         else:
             raise ValueError('obs_names changed after integration!')
@@ -157,6 +155,7 @@ if __name__=='__main__':
     ari_ = True
     pcr_ = True
     cell_cycle_ = True
+    isolated_labels_ = True
     hvgs_ = True
     kBET_ = True
     lisi_ = True
@@ -187,6 +186,7 @@ if __name__=='__main__':
                               ari_=ari_,
                               pcr_=pcr_,
                               cell_cycle_=cell_cycle_, organism=organism,
+                              isolated_labels_=isolated_labels_, n_isolated=None,
                               kBET_=kBET_,
                               lisi_=lisi_
                              )
