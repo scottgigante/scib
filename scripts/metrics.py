@@ -11,6 +11,8 @@ import sys
 #sys.path.remove('/home/icb/chaichoompu/Benchmarking_data_integration')
 sys.path.append('/storage/groups/ce01/workspace/Benchmarking_data_integration_branch_master/Benchmarking_data_integration')
 
+import scIB
+
 # types of integration output
 RESULT_TYPES = [
     "full", # reconstructed expression data
