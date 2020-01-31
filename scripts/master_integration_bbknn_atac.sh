@@ -2,7 +2,7 @@
 
 # Global settings
 SCRIPTPATH=/home/icb/chaichoompu/Group/workspace/Benchmarking_data_integration_branch_ATAC/Benchmarking_data_integration/scripts
-CPU=24
+CPU=12
 RAMperCPU=16000
 RERUN=0
 
@@ -34,8 +34,10 @@ function run_all {
 # Please use the full path
 
 declare -a arr=(
-    '/storage/groups/ce01/workspace/Benchmarking_data_integration/data/brain_atac_3datasets/merge_10x_CEMBA180312_3B_GSM3034638_bin_merged_top_var_feat_min500cells_regression_Seurat_cell_labels.h5ad|batchname|/storage/groups/ce01/workspace/Benchmarking_data_integration/data/brain_atac_3datasets'
-    '/storage/groups/ce01/workspace/Benchmarking_data_integration/data/brain_atac_3datasets/merge_10x_all_Fang_GSE111586_bin_merged_top_750000_var_feat_min100cells_regressed_20191015_good_cell_label_sparse.h5ad|batchname|/storage/groups/ce01/workspace/Benchmarking_data_integration/data/brain_atac_3datasets'
+#    '/storage/groups/ce01/workspace/Benchmarking_data_integration/data/brain_atac_small/merge_10x_CEMBA180312_3B_GSM3034638_bin_merged_top_var_feat_min500cells_regression_Seurat_cell_labels.h5ad|batchname|/storage/groups/ce01/workspace/Benchmarking_data_integration/data/brain_atac_3datasets'
+#    '/storage/groups/ce01/workspace/Benchmarking_data_integration/data/brain_atac_small/merge_10x_all_Fang_GSE111586_bin_merged_top_750000_var_feat_min100cells_regressed_20191015_good_cell_label_sparse.h5ad|batchname|/storage/groups/ce01/workspace/Benchmarking_data_integration/data/brain_atac_3datasets'
+    '/storage/groups/ce01/workspace/Benchmarking_data_integration/data/brain_atac_small/small_dataset_10x_Fang_150000_normalised_cell_label_counts_sparse.h5ad'
+    '/storage/groups/ce01/workspace/Benchmarking_data_integration/data/brain_atac_small/small_dataset_10x_Fang_Cus_150000_normalised_cell_label_counts_sparse.h5ad'
     )
 
 for i in "${arr[@]}"

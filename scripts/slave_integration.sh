@@ -1,5 +1,14 @@
 #!/bin/bash
 
+## edit here
+CONDA_ENV=snake_clone
+NODE_TMP=/localscratch/scib_run
+NODE_PYTHON=python
+NODE_PYSCRIPT=/home/icb/chaichoompu/Group/workspace/Benchmarking_data_integration_branch_master/Benchmarking_data_integration/scripts/runIntegration.py
+
+## fixed part
+source activate ${CONDA_ENV} 
+
 if [ X"$SLURM_STEP_ID" = "X" -a X"$SLURM_PROCID" = "X"0 ]
 then
   echo "print =========================================="
@@ -23,10 +32,6 @@ if [ $# -eq 0 ]
     exit
 fi
 
-NODE_TMP=/localscratch/scib_run
-NODE_PYTHON=/home/icb/daniel.strobl/miniconda3/envs/sc-tutorial/bin/python
-NODE_PYSCRIPT=/home/icb/chaichoompu/Group/workspace/Benchmarking_data_integration_branch_ATAC/Benchmarking_data_integration/scripts/runIntegration.py
-
 FBASE=${INPUTFILE##*/}
 FPREF=${FBASE%.*}
 
@@ -43,9 +48,6 @@ if [ ! -f ${FINAL_OUTPUT} -o  ${RERUN} = "1" ]; then
     echo "Check output file: not exist"
     echo "Or rerun is enable"
     
-    source /home/icb/daniel.strobl/.bashrc
-    source activate sc-tutorial 
-
     # create the temporary directory if not exist
     if [ ! -d "$NODE_TMP" ]; then
       mkdir ${NODE_TMP}
@@ -61,7 +63,6 @@ if [ ! -f ${FINAL_OUTPUT} -o  ${RERUN} = "1" ]; then
         cp ${INPUTFILE} ${NODE_TMP}/.
     fi
 
-    
     echo ${NODE_PYTHON} -s ${NODE_PYSCRIPT} -i ${NODE_INPUTFILE} -o ${NODE_OUTPUTFILE} -b ${BATCH} -v ${HVGS} -m ${METHOD} 
 
     STARTTIME=$(date +%s)
